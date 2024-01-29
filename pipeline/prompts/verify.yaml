@@ -1,0 +1,135 @@
+image-to-text:
+  system: |-
+    You are a brilliant hallucination judger.
+  user: |-
+    Given a list of claims from Multimodal Large Language Models and an image, you are required to judge whether each claim in the list by the Multimodal Large Language Model model conflicts with the image, following these rules: 
+
+    1. You must carefully judge from four aspects, including the object, attributes, scene text and fact. Here are specific descriptions of the four aspects for you to review:
+        "Object" specifically refers to whether the objects in the image exist and if the quantity of objects conflicts with the object information in the claims;
+        "Attributes" specifically refer to whether the color, position, action of objects in the image conflict with the attribute information in the claims;
+        "Scene Text" specifically refers to whether the textual information in the scene of the image conflicts with the required textual information in the claims.
+        "Fact" specifically refers to relevant factual knowledge obtained by querying a search engine. You can verify the factual accuracy of the claims based on the provided external knowledge.
+        
+    2. You'll also receive detection results from the expert model. 
+        The object detection expert model will provide detected entity names along with their bounding box information in the image. When deriving position relationships between entity instances, try to also use the bounding boxes information, which are represented as [x1, y1, x2, y2] with floating numbers ranging from 0 to 1. These values correspond to the top left x1, top left y1, bottom right x2, and bottom right y2. 
+        The scene text expert model will provide detected specific text along with their bounding box information in the image. As long as there is a conflict between a single letter in the scene text and the text information required in the claim, it's considered a hallucination.
+        
+    3. You must carefully judge whether the visual information in the image conflicts with each claim. If there is a conflict, the result for that statement is labeled as 'hallucination'; otherwise, it is labeled as 'non-hallucination'."
+        
+    4. Finally, YOU MUST RETURN THE JUDGMENT RESULTS IN A DICTIONARY ACCORDING TO THE GIVEN ORDER OF THE LIST OF CLAIMS. You MUST only respond in the format as described below. DO NOT RESPOND WITH ANYTHING ELSE.
+        response format: [{"claim1":"hallucination", "reason":"The reason for your judgment."},{"claim2":"non-hallucination", "reason":"The reason for your judgment."},{"claim3":"hallucination", "reason":"The reason for your judgment."}, ...]
+  example1: |-
+    Here is the object detection expert model's result:
+    Here is the object detection expert model's result:
+    people [0.345, 0.424, 0.408, 0.509]
+    people [0.197, 0.44, 0.28, 0.514]
+    people [0.517, 0.315, 0.561, 0.401]
+    people [0.441, 0.356, 0.47, 0.405]
+    chair [0.398, 0.595, 0.637, 0.901]
+    chair [0.621, 0.592, 0.789, 0.889]
+    umbrella [0.501, 0.334, 0.968, 0.88]
+
+    Here is the scene text recognition expert model's result:
+    none information
+
+    Here is the external knowledge:
+    none information
+
+    Here is the claim list:
+    claim1: The picture shows five people swimming.
+    claim2: On the beach, there is a chair, a umbrella, and a surfboard.
+    claim3: The green umbrella is on the right side of the chair.
+
+    Output:
+    [
+        {"claim1":"hallucination","reason":"The object detection expert model identified four people, not five people. Based on the image information, they might be swimming. Therefore, there's a hallucination."},
+        {"claim2":"hallucination","reason":"According to the results of the object detection expert model and my judgment, there are two chairs and an umbrella in the picture, but there is no surfboard. Therefore, there's a hallucination."},
+        {"claim3":"non-hallucination","reason":"Based on the positional information of the bounding boxes and my judgment, the umbrella is to the right of the chairs. The umbrella is green. Therefore, there's no hallucination."}
+    ]
+  example2: |-
+    Here is the object detection expert model's result:
+    uniform [0.077, 0.179, 0.355, 0.705]
+    uniform [0.304, 0.333, 0.888, 0.809]
+    athlete [0.072, 0.036, 0.481, 0.931]
+    athlete [0.153, 0.199, 0.977, 0.924]
+
+    Here is the scene text recognition expert model's result:
+    ic  [0.0, 0.168, 0.082, 0.322]
+    DALLAS  [0.447, 0.525, 0.533, 0.661]
+    Panasonic  [0.392, 0.161, 1.0, 0.322]
+
+    Here is the external knowledge:
+    1.Club América: Soccer club
+    2.Club de Fútbol América S.A. de C.V., commonly known as Club América or simply América, is a professional football club based in Mexico City. Nicknamed Las Águilas, it competes in Liga MX, the top tier of Mexican football. The club was founded in...
+    3.Owner: Televisa
+    4.Location: Mexico City, Mexico
+    5.Arena/Stadium: Aztec Stadium
+    6.Club América have won more titles than any other team in Mexican football. Domestically, the club has won a record fourteen league titles, as well as a record six Copa México titles, and six Campeón de Campeones cups.
+
+    Here is the claim list:
+    claim1: The athlete on the right side wears the red uniform.
+    claim2: The athlete on the right side belongs to Club América.
+    claim3: Club América is the American soccer team.
+
+    Output:
+    [
+        {"claim1":"hallucination","reason":"The object detection expert model identified two athletes, with the athlete on the right wearing white uniform, and the athlete on the left wearing red uniform. Therefore, there's a hallucination."},
+        {"claim2":"hallucination","reason":"The scene text on the uniform of the athlete on the right indicates the team he belong to. Based on the scene text expert model's results and my judgment, he should belong to the DALLAS team not Club América. Therefore, there's a hallucination."},
+        {"claim3":"hallucination","reason":"Based on the external knowledge and my judgment, Club América is Mexican team. Therefore, there's a hallucination."}
+    ]
+
+text-to-image:
+  system: |-
+    You are a brilliant hallucination judger.
+  user: |-
+    Given a list of claims from human prompts, an image generated by the text-to-image model, you are required to judge whether the image conflicts with human-provided prompts, following these rules: 
+
+    1. You must carefully judge from four aspects, including the object, attributes, scene text and fact. Here are specific descriptions of the four aspects for you to review:
+        "Object" specifically refers to whether the objects in the image exist and if the quantity of objects conflicts with the object information in the claims;
+        "Attributes" specifically refer to whether the color, position, action of objects in the image conflict with the attribute information in the claims;
+        "Scene Text" specifically refers to whether the textual information in the scene of the image conflicts with the textual information in the claims.
+        "Fact" specifically refers to whether the generated image conflicts with the facts, such as whether the generated image of the Eiffel Tower resembles the actual tower, whether the generated image of Yao Ming resembles the real person, whether the generated Coca-Cola bottle resembles the actual one, etc. The external knowledge will provide descriptions of factual images, and you're asked to combine this external knowledge to assess whether it conflicts with the factual information depicted in the image.
+
+    2. You'll receive detection results from the expert model. 
+        The object detection expert model will provide detected object names along with their bounding box information in the image. When inferring the quantity of objects, counting can be done based on the number of object names. When deriving position relationships between object instances, try to also use the bounding boxes information, which are represented as [x1, y1, x2, y2] with floating numbers ranging from 0 to 1. These values correspond to the top left x1, top left y1, bottom right x2, and bottom right y2. 
+        The scene text expert model will provide detected specific text along with their bounding box information in the image. YOU MUST CAREFULLY REFER TO THE TEXT RECOGNIZED BY THE EXPERT MODEL AND MAKE YOUR OWN JUDGMENT. As long as there is a conflict between a single letter in the scene text and the text information required in the claim, it's considered a hallucination.
+        
+    3. You must carefully judge whether the visual information in the image conflicts with each claim. If there is a conflict, the result for that statement is labeled as 'hallucination'; otherwise, it is labeled as 'non-hallucination'."
+        
+    4. Finally, YOU MUST RETURN THE JUDGMENT RESULTS A DICTIONARY ACCORDING TO THE GIVEN ORDER OF THE LIST OF CLAIMS. You MUST only respond in the format as described below. DO NOT RESPOND WITH ANYTHING ELSE.
+        response format: [{"claim1":"hallucination", "reason":"Reason about whether the claim has hallucination. Think step by step."},{"claim2":"non-hallucination", "reason":"Reason about whether the claim has hallucination. Think step by step."},{"claim3":"hallucination", "reason":"Reason about whether the claim has hallucination. Think step by step."}, ...]
+  example1: |-
+    Here is the object detection expert model's result:
+    dog [0.107, 0.005, 0.56, 0.999]
+    cat [0.597, 0.066, 1.0, 0.953]
+    grass [0.0, 0.164, 1.0, 0.999]
+
+    Here is the scene text recognition expert model's result:
+    none information
+
+    Here is the external knowledge:
+    none information
+
+    Here is the claim list:
+    claim1: There is a black dog on the right
+    claim2: The dog is on the grass.
+    claim3: There are two black cats.
+
+    Output: [{"claim1":"hallucination", "reason":"The object detection model has identified a dog in the image, but the dog is yellow not black, and the dog on the left isn't on the right in the image. Therefore, there's a hallucination."},{"claim2":"non-hallucination","reason": "The object detection model has identified a dog and grass in the image.And the dog is on the grass. Therefore, there's no hallucination."},{"claim3":"hallucination", "reason":"The object detection model has only identified one black cat, not two black cats. Therefore, there's a hallucination."}]
+  example2: |-
+    Here is the object detection expert model's result:
+    basketball [0.741, 0.179, 0.848, 0.285]
+    boy [0.773, 0.299, 0.98, 0.828]
+    car [0.001, 0.304, 0.992, 0.854]
+
+    Here is the scene text recognition expert model's result:
+    worlld [0.405, 0.504, 0.726, 0.7]
+
+    Here is the external knowledge:
+    none information
+
+    Here is the claim list:
+    claim1: The side of the car reads 'Hello World'
+    claim2: A boy is playing a yellow basketball beside a plant.
+
+    Output: [{"claim1":"hallucination", "reason":"The object detection model has identified a car in the image. However, based on the detection results of the scene text expert model and my judgment, the text in the image is 'hello worlld' not 'hello world'. Therefore, there's a hallucination."},{"claim2":"hallucination", "reason":"The object detection model has identified a boy and a basketball in the image. And the boy is visible in the image playing with a yellow basketball. But according to the detection results of the object detection expert model and my judgment, there's no plant. Therefore, there's a hallucination."}]

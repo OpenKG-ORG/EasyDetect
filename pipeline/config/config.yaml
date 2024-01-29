@@ -1,0 +1,30 @@
+openai:
+  api_key: input your openai api key
+  base_url:
+  temperature: 0.2  
+  max_tokens: 1024
+tool: 
+  detect:
+    groundingdino_config: the path of GroundingDINO_SwinT_OGC.py
+    model_path: the path of groundingdino_swint_ogc.pth
+    device: cuda:0
+    BOX_TRESHOLD: 0.35
+    TEXT_TRESHOLD: 0.25
+    AREA_THRESHOLD: 0.001
+  ocr:
+    dbnetpp_config: the path of dbnetpp_resnet50-oclip_fpnc_1200e_icdar2015.py
+    dbnetpp_path: the path of dbnetpp.pth
+    maerec_config: the path of maerec_b_union14m.py
+    maerec_path: the path of maerec_b.pth
+    device: cuda:0
+    content: word.number
+    cachefiles_path: the path of cache_files to save temp images
+    BOX_TRESHOLD: 0.2
+    TEXT_TRESHOLD: 0.25
+  google_serper:
+    serper_api_key: input your serper api key
+    snippet_cnt: 10
+prompts:
+  claim_generate: pipeline/prompts/claim_generate.yaml
+  query_generate: pipeline/prompts/query_generate.yaml
+  verify: pipeline/prompts/verify.yaml

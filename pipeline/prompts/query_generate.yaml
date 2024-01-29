@@ -1,0 +1,324 @@
+image-to-text:
+  object:
+    system: |-
+      You are a brilliant object extractor.
+    user: |-
+      Given a list of claim, extract the objects from each claim for me. 
+      Extract the common objects and summarize them as general categories without repetition, merge essentially similar objects. 
+      Avoid extracting hypernyms, keep hyponyms!
+      Avoid extracting abstract or non-specific objects. 
+      Extract object in the singular form. 
+      Output all the extracted types of items separate each object type with a period. 
+      If there is nothing to output, then output a single "none".
+      YOU MUST TO DISREGARD OBJECT WORDS THAT ARE NOT NATURAL OBJECTS, SUCH AS SCENES, AREA, SKY, GROUND, WORDS, ATMOSPHERES, COUNTRIES, NAMES, AND PLACES.IF THERE ARE NO NATURAL objects IN THE SENTENCE, RETURN 'none'.
+      YOU MUST RETURN THE RESULTS IN A DICTIONARY ACCORDING TO THE GIVEN ORDER OF THE LIST OF CLAIMS.
+      You MUST only respond in the format as described below. DO NOT RESPOND WITH ANYTHING ELSE.
+      response format: {{"claim1":"object1.object2.object3","claim2":"none","claim3":"object1.object2", ...}}
+
+      Here are three examples:
+      claim list:
+      claim1: The image depicts a man laying on the ground.
+      claim2: The man is next to a motorcycle.
+      claim3: The sun is shining upon the ground.
+      claim4: The light is very bright.
+      output:
+      {{"claim1":"man","claim2":"man.motorcycle","claim3":"none", "claim4":"none"}}
+
+      claim list:
+      claim1: The image shows a device.
+      claim2: The device has the words \"Samsung\".
+      claim3: Samsung is a Korean company.
+      output:
+      {{"claim1":"device","claim2":"device", "claim3":"none"}}
+
+      claim list:
+      claim1: A man wears a green shirt.
+      claim2: The man's face is beaming with a smile.
+      claim3: The image shows the man in high spirits.
+      output:
+      {{"claim1":"man.shirt","claim2":"man","claim3":"man"}}
+
+      Now complete your output with following the above rules.
+      claim list:
+      {claims}
+      output:
+
+  attribute:
+    system: |-
+      You are a brilliant question generator.
+    user: |-
+      Given a list of claim and some objects(each object is connected by a period), you're required to generate questions about attributes of the given objects. 
+      The generated questions may involve basic attributes such as colors, actions and position mentioned in the claim. 
+      Do not ask questions involving object counts or the existence of object.
+      Do not ask questions involving scene text.
+      When asking questions about attributes, try to ask simple questions that only involve one object. 
+      Ask questions that can be easily decided visually. Do not ask questions that require complex reasoning.
+      Do not ask semantically similar questions. Do not ask questions only about scenes or places.
+      Do not ask questions about uncertain or conjecture parts of the claim, for example, the parts described with "maybe" or "likely", etc.
+      It is no need to cover all the specified objects. If there is no question to ask, simply output 'none'.
+      YOU MUST RETURN THE RESULTS IN A DICTIONARY ACCORDING TO THE GIVEN ORDER OF THE LIST OF CLAIMS.
+      You MUST only respond in the format as described below. DO NOT RESPOND WITH ANYTHING ELSE.
+      response format: {{"claim1":["question1", "question2"],"claim2":["none"],"claim3":["question1", "question2"], ...}}
+
+      Here are three examples:
+      objects:
+      dog.cat
+      claim list:
+      claim1: There is one black dog on the left in the image.
+      claim2: There are two white cats on the right in the image.
+      output:
+      {{"claim1":["What color is the dog?", "Is there a dog on the left in the image?"],"claim2":["What color are the cat?", "Are there two cats on the right in the image?"]}}
+
+      objects:
+      man.baseball cap.wall
+      claim list:
+      claim1: The man is wearing a baseball cap.
+      claim2: The man appears to be smoking.
+      claim3: 'hello world' is written on the white wall.
+      output:
+      {{"claim1":["What is the man wearing?"], "claim2":["Does the man appear to be smoking?"], "claim3":[What color is the wall?]}}
+
+      objects:
+      kitchen.man.apron
+      claim list:
+      claim1: The image depicts a kitchen.
+      claim2: There is a man in a white apron. 
+      claim3: The man is standing in the middle of the kitchen.
+      claim4: The overall atmosphere is very pleasant.
+      output:
+      {{"claim1":["none"], "claim2":["What does the man wear?", "What color is the apron?"], "claim3":["Is the man standing in the middle of the kitchen?"], "claim4": ["none"]}}   
+
+      Now complete the following with following the above rules. DO NOT RESPOND WITH ANYTHING ELSE.
+      objects:
+      {objects}
+      claim list:
+      {claims}
+      output:
+
+  scene-text:
+    system: |-
+      You are a brilliant question generator.
+    user: |-
+      Given a list of claim, you're required to generate questions about scene text to assist users in verifying the accuracy of the claim. 
+      If the information mentioned in this claim pertains to scene text, you'll need to generate question about the scene text.
+      If the claim is unrelated to the scene text information in the image, such as: objects, colors, actions, position etc, simply return 'none'.
+      YOU MUST RETURN THE RESULTS IN A DICTIONARY ACCORDING TO THE GIVEN ORDER OF THE LIST OF CLAIMS.
+      You MUST only respond in the format as described below. DO NOT RESPOND WITH ANYTHING ELSE.
+      response format: {{"claim1":["question1", "question2"],"claim2":["none"],"claim3":["question1", "question2"], ...}}
+
+      Here are three examples:
+      claim list:
+      claim1: There is a black device in the image.
+      claim2: The device is a brand of smartphones produced by Samsung Electronics.
+      output: {{"claim1":["none"],"claim2":["What is the brand of the device in the image?"]}}
+      
+      claim list:
+      claim1: A stop sign is on the left.
+      claim2: The stop sign says stop eating animals.
+      output: {{"claim1":["none"],"claim2":["What does the stop sign say in the image?"]}}
+
+      claim list:
+      claim1: The words 'Hello World' are written on the car
+      claim2: A man is standing beside the car.
+      output: {{"claim1":["What are written on the car?"],"claim2":["none"]}}
+
+      Now complete the following with following the above rules. DO NOT RESPOND WITH ANYTHING ELSE.
+      claim list:
+      {claims}
+      output:
+
+  fact:
+    system: |-
+      You are a brilliant question generator.
+    user: |-
+      Given a list of claim, you're required to generate questions about factual knowledge.  
+      For a claim based on factual knowledge, Your primary task is to generate a Python list of two effective and skeptical search engine questions.
+      These questions should assist users in critically evaluating the factuality of a provided claim using search engines.
+      If a claim is not based on factual knowledge, simply return 'none'.
+      YOU MUST RETURN THE RESULTS IN A DICTIONARY ACCORDING TO THE GIVEN ORDER OF THE LIST OF CLAIMS.
+      You MUST only respond in the format as described below. DO NOT RESPOND WITH ANYTHING ELSE.
+      response format: {{"claim1":["question1", "question2"],"claim2":["none"],"claim3":["question1", "question2"], ...}}
+
+      Here are three examples:
+      claim list: 
+      claim1: The image shows a black phone.
+      claim2: This black phone is manufactured by Huawei.
+      claim3: Huawei is a company located in Shenzhen, China.
+      output: 
+      {{"claim1":["none"],"claim2":["none"],"claim3":["Where is Huawei headquartered?", "Huawei company"]}}
+
+      claim list:
+      claim1: The image shows an app of twitter.
+      claim2: The CEO of twitter is Bill Gates.
+      output: {{"claim1":["none"],"claim2":["Who is the CEO of twitter?", "CEO Twitter"]}}
+
+      claim list:
+      claim1: The man is playing baseball.
+      claim2: The man is wearing a colorful shirt.
+      output: {{"claim1":["none"],"claim2":["none"]}}
+
+      Now complete the following with following the above rules. DO NOT RESPOND WITH ANYTHING ELSE.
+      claim list:
+      {claims}
+      output: 
+
+
+text-to-image:
+  object:
+    system: |-
+      You are a brilliant object extractor.
+    user: |-
+      Given a list of claim, extract the objects from each claim for me. 
+      Extract the common objects and summarize them as general categories without repetition, merge essentially similar objects. 
+      Avoid extracting hypernyms, keep hyponyms!
+      Avoid extracting abstract or non-specific objects. 
+      Extract object in the singular form. 
+      Output all the extracted types of items separate each object type with a period. 
+      If there is nothing to output, then output a single "none".
+      YOU MUST TO DISREGARD OBJECT WORDS THAT ARE NOT NATURAL OBJECTS, SUCH AS SCENES, AREA, SKY, GROUND, WORDS, ATMOSPHERES, COUNTRIES, NAMES, AND PLACES.IF THERE ARE NO NATURAL objects IN THE SENTENCE, RETURN 'none'.
+      YOU MUST RETURN THE RESULTS IN A DICTIONARY ACCORDING TO THE GIVEN ORDER OF THE LIST OF CLAIMS.
+      You MUST only respond in the format as described below. DO NOT RESPOND WITH ANYTHING ELSE.
+      response format: {{"claim1":"object1.object2.object3","claim2":"none","claim3":"object1.object2", ...}}
+
+      Here are three examples:
+      claim list:
+      claim1: The image depicts a man laying on the ground.
+      claim2: The man is next to a motorcycle.
+      claim3: The sun is shining upon the ground.
+      claim4: The light is very bright.
+      output:
+      {{"claim1":"man","claim2":"man.motorcycle","claim3":"none", "claim4":"none"}}
+
+      claim list:
+      claim1: The image shows a device.
+      claim2: The device has the words \"Samsung\".
+      claim3: Samsung is a Korean company.
+      output:
+      {{"claim1":"device","claim2":"device", "claim3":"none"}}
+
+      claim list:
+      claim1: A man wears a green shirt.
+      claim2: The man's face is beaming with a smile.
+      claim3: The image shows the man in high spirits.
+      output:
+      {{"claim1":"man.shirt","claim2":"man","claim3":"man"}}
+
+      Now complete your output with following the above rules.
+      claim list:
+      {claims}
+      output:
+  
+  attribute:
+    system: |-
+      You are a brilliant question generator.
+    user: |-
+      Given a list of claim and some objects(each object is connected by a period), you're required to generate questions about attributes of the given objects. 
+      The generated questions may involve basic attributes such as colors, actions and position mentioned in the claim. 
+      Do not ask questions involving object counts or the existence of object.
+      Do not ask questions involving scene text.
+      When asking questions about attributes, try to ask simple questions that only involve one object. 
+      Ask questions that can be easily decided visually. Do not ask questions that require complex reasoning.
+      Do not ask semantically similar questions. Do not ask questions only about scenes or places.
+      Do not ask questions about uncertain or conjecture parts of the claim, for example, the parts described with "maybe" or "likely", etc.
+      It is no need to cover all the specified objects. If there is no question to ask, simply output 'none'.
+      YOU MUST RETURN THE RESULTS IN A DICTIONARY ACCORDING TO THE GIVEN ORDER OF THE LIST OF CLAIMS.
+      You MUST only respond in the format as described below. DO NOT RESPOND WITH ANYTHING ELSE.
+      response format: {{"claim1":["question1", "question2"],"claim2":["none"],"claim3":["question1", "question2"], ...}}
+
+      Here are three examples:
+      objects:
+      dog.cat
+      claim list:
+      claim1: There is one black dog on the left in the image.
+      claim2: There are two white cats on the right in the image.
+      output:
+      {{"claim1":["What color is the dog?", "Is there a dog on the left in the image?"],"claim2":["What color are the cat?", "Are there two cats on the right in the image?"]}}
+
+      objects:
+      man.baseball cap.wall
+      claim list:
+      claim1: The man is wearing a baseball cap.
+      claim2: The man appears to be smoking.
+      claim3: 'hello world' is written on the white wall.
+      output:
+      {{"claim1":["What is the man wearing?"], "claim2":["Does the man appear to be smoking?"], "claim3":[What color is the wall?]}}
+
+      objects:
+      kitchen.man.apron
+      claim list:
+      claim1: The image depicts a kitchen.
+      claim2: There is a man in a white apron. 
+      claim3: The man is standing in the middle of the kitchen.
+      claim4: The overall atmosphere is very pleasant.
+      output:
+      {{"claim1":["none"], "claim2":["What does the man wear?", "What color is the apron?"], "claim3":["Is the man standing in the middle of the kitchen?"], "claim4": ["none"]}}   
+
+      Now complete the following with following the above rules. DO NOT RESPOND WITH ANYTHING ELSE.
+      objects:
+      {objects}
+      claim list:
+      {claims}
+      output:
+
+  scene-text:
+    system: |-
+      You are a brilliant question generator.
+    user: |-
+      Given a claim list, you're required to generate questions about scene text to assist users in verifying the accuracy of a image using an OCR model. 
+      You must carefully observe vocabulary related to scene text, such as words, text, write, says, letters, etc
+      Ask questions that can be easily decided visually. Do not ask questions that require complex reasoning.
+      DO NOT ASK QUESTIONS INVOLVING objects, COLORS, POSITION, ACTIONS!!!
+      If there is no question to ask, simply output: a 'none'.
+
+      Here are three examples:
+      claim list: claim1: There is a white wall. claim2: The word "Hello" is written on the wall.
+      output: {{"claim1":"none", "claim2":"What is written on the wall?"}}
+
+      claim list: claim1: A stop sign says eating animals.
+      output: {{"claim1":"What does the stop sign say in the image?"}}
+
+      claim list: claim1: There is one black dog in the image. claim2: There are two white cats in the image.
+      output: {{"claim1":"none", "claim2":"none"}}
+
+      Now complete the following:
+      claim list: {claims}
+      output:
+
+  fact: 
+    system: |-
+      You are a brilliant question generator.
+    user: |-
+      Given a list of claim, you're required to generate questions about related to factual visual information.
+      For a claim based on factual knowledge, Your primary task is to generate a Python list of two effective and skeptical search engine questions.
+      These questions should assist users in critically evaluating the factuality of a provided claim using search engines.
+      If a claim is not based on factual knowledge, simply return 'none'.
+      YOU MUST RETURN THE RESULTS IN A DICTIONARY ACCORDING TO THE GIVEN ORDER OF THE LIST OF CLAIMS.
+      You MUST only respond in the format as described below. DO NOT RESPOND WITH ANYTHING ELSE.
+      response format: {{"claim1":["question1", "question2"],"claim2":["none"],"claim3":["question1", "question2"], ...}}
+      
+      Here are three examples:
+      claim list: 
+      claim1: There is a black phone.
+      claim2: The black phone has Huawei logo.
+      output: 
+      {{"claim1":["none"],"claim2":["none"],"claim3":["Huawei logo", "The design of the Huawei logo"]}}
+
+      claim list:
+      claim1: The image shows a red coca-cola.
+      output: {{"claim1":["The appearance of Coca-Cola", "The design of Coca-Cola"]}}
+
+      claim list:
+      claim1: The man is playing baseball.
+      claim2: The man is wearing a colorful shirt.
+      output: {{"claim1":["none"],"claim2":["none"]}}
+
+      Now complete the following with following the above rules. DO NOT RESPOND WITH ANYTHING ELSE.
+      claim list:
+      {claims}
+      output: 
+
+
+
+
+
+    
