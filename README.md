@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="figs/logo.png" width="300px">
+<img src="figs/logo.jpg" width="300px">
 
-**An Easy-to-use Hallucination Detection Framework for LLMs**
+**An Easy-to-use Multimodal Hallucination Detection Framework for MLLMs**
 
 ---
 
@@ -16,59 +16,63 @@
 
 ![](https://img.shields.io/badge/version-v0.1.1-blue)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-![](https://img.shields.io/github/last-commit/zjunlp/EasyInstruct?color=green) 
+![](https://img.shields.io/github/last-commit/zjunlp/EasyDetect?color=green) 
 ![](https://img.shields.io/badge/PRs-Welcome-red) 
 
 </div>
 
 ## Table of Contents
 
-- <a href="#news">What's New</a>
+<!-- - <a href="#news">What's New</a> -->
 - <a href="#overview">Overview</a>
+  - <a href="#hallucination">Unified Multimodal Hallucination Detection</a>
+  - <a href="#benchmark">Datasets: MHalluBench Statistic</a>
+  - <a href="#framework">UniHDet Framework</a>
 - <a href="#quickstart">Quickstart</a>
   - <a href="#shell-script">Shell Script</a>
   - <a href="#gradio-app">Gradio App</a>
 - <a href="#citation">Citation</a>
 - <a href="#contributors">Contributors</a>
-
-<!-- ## 🔔News
-
-- **2023-12-9 The paper "[When Do Program-of-Thoughts Work for Reasoning?](https://arxiv.org/abs/2308.15452)" (supported by EasyInstruct), is accepted by AAAI 2024!**
-- **2023-10-28 We release version 0.1.1, supporting for new features of instruction generation and instruction selection.**
-- **2023-8-9 We release version 0.0.6, supporting Cohere API calls.**
-- **2023-7-12 We release [EasyEdit](https://github.com/zjunlp/EasyEdit), an easy-to-use framework to edit Large Language Models.**
-<details>
-<summary><b>Previous news</b></summary>
-
-- **2023-5-23 We release version 0.0.5, removing requirement of llama-cpp-python.**
-- **2023-5-16 We release version 0.0.4, fixing some problems.**
-- **2023-4-21 We release version 0.0.3, check out our [documentations](https://zjunlp.gitbook.io/easyinstruct/documentations) for more details.**
-- **2023-3-25 We release version 0.0.2, suporting IndexPrompt, MMPrompt, IEPrompt and more LLMs**
-- **2023-3-13 We release version 0.0.1, supporting in-context learning, chain-of-thought with ChatGPT.**
-  
-</details> -->
-
 ---
 
 
 
 ## 🌟Overview
 
-EasyInstruct is a Python package which is proposed as an easy-to-use instruction processing framework for Large Language Models(LLMs) like GPT-3, Llama, ChatGLM in your research experiments. EasyInstruct modularizes instruction generation, selection, and prompting, while also considering their combination and interaction. 
-
-<img src="figs/overview.png">
-
-- The current supported instruction generation techniques are as follows:
-
-  | **Methods** | **Description** |
-  | --- | --- |
-  | [Self-Instruct](https://arxiv.org/abs/2212.10560) | The method that randomly samples a few instructions from a human-annotated seed tasks pool as demonstrations and prompts an LLM to generate more instructions and corresponding input-output pairs. |
-  | [Evol-Instruct](https://arxiv.org/abs/2304.12244) | The method that incrementally upgrades an initial set of instructions into more complex instructions by prompting an LLM with specific prompts. |
-  | [Backtranslation](https://arxiv.org/abs/2308.06259) | The method that creates an instruction following training instance by predicting an instruction that would be correctly answered by a portion of a document of the corpus.  |
-  | [KG2Instruct](https://arxiv.org/abs/2305.11527) | The method that creates an instruction following training instance by predicting an instruction that would be correctly answered by a portion of a document of the corpus. |
+EasyDetect is a systematic package which is proposed as an easy-to-use hallucination detection framework for Multimodal Large Language Models(MLLMs) like GPT-4V, Gemini, LlaVA in your research experiments. 
 
 
+### Unified Multimodal Hallucination Detection
+#### Unified View of Detection
+A prerequisite for unified detection is the coherent categorization of the principal categories of hallucinations within MLLMs. Our paper superficially examines the following Hallucination Taxonomy from a unified perspective:
 
+<img src="figs/intro.png">
+
+**Modality-Conflicting Hallucination.**  MLLMs sometimes generate outputs that conflict with inputs from other modalities, leading to issues such as incorrect objects, attributes, or scene text. An example in above ![Figure 1](path_to_image/figure_intro.png)
+ includes an MLLM inaccurately describing an athlete's uniform color, showcasing an attribute-level conflict due to MLLMs' limited ability to achieve fine-grained text-image alignment.
+
+
+**Fact-Conflicting Hallucination.** Outputs from MLLMs may contradict established factual knowledge. Image-to-text models can generate narratives that stray from the actual content by incorporating irrelevant facts, while text-to-image models may produce visuals that fail to reflect the factual knowledge contained in text prompts. These discrepancies underline the struggle of MLLMs to maintain factual consistency, representing a significant challenge in the domain.
+
+<img src="figs/view.png">
+
+
+#### Fine-grained Detection Task Definition
+Unified detection of multimodal hallucination necessitates the check of each image-text pair `a={v, x}`, wherein `v` denotes either the visual input provided to an MLLM, or the visual output synthesized by it. Correspondingly, `x` signifies the MLLM's generated textual response based on `v` or the textual user query for synthesizing `v`. Within this task, each `x` may contain multiple claims, denoted as `{c_i}_{i=1...n}`. The objective for hallucination detectors is to assess each claim from `a` to determine whether it is "hallucinatory" or "non-hallucinatory", providing a rationale for their judgments based on the provided definition of hallucination. Text hallucination detection from LLMs denotes a sub-case in this setting, where `v` is null.
+
+
+### Datasets: MHalluBench Statistic
+To advance this research trajectory, we introduce the meta-evaluation benchmark MHaluBench, which encompasses the content from image-to-text and text-to-image generation, aiming to rigorously assess the advancements in multimodal halluci-
+nation detectors. Further statistical details about MHaluBench are provided in below Figures.
+
+![A comparison of benchmarks w.r.t existing fact-checking or hallucination evaluation.](figs/datasetinfo.png)
+
+**Table 1:** *A comparison of benchmarks with respect to existing fact-checking or hallucination evaluation.* "Check." indicates verifying factual consistency, "Eval." denotes evaluating hallucinations generated by different LLMs, and its response is based on different LLMs under test, while "Det." embodies the evaluation of a detector’s capability in identifying hallucinations.
+
+
+<img src="figs/饼图.png">
+
+<img src="figs/条形图.png">
 
 ---
 
@@ -118,28 +122,25 @@ python demo/run.py \
 Please cite our repository if you use EasyInstruct in your work.
 
 ```bibtex
-@misc{easyinstruct,
-  author = {Yixin Ou and Ningyu Zhang and Honghao Gui and Zhen Bi and Yida Xue and Runnan Fang and Kangwei Liu and Lei Li and Shuofei Qiao and Huajun Chen},
-  title = {EasyInstruct: An Easy-to-use Instruction Processing Framework for Large Language Models},
-  year = {2023},
-  url = {https://github.com/zjunlp/EasyInstruct},
+@article{chen2024factchd,
+        title={FactCHD: Benchmarking Fact-Conflicting Hallucination Detection}, 
+        author={Xiang Chen and Duanzheng Song and Honghao Gui and Chenxi Wang and Ningyu Zhang 
+          and Jiang Yong and Fei Huang and Chengfei Lv and Dan Zhang and Huajun Chen},
+        year={2024},
+        eprint={2310.12086},
+        archivePrefix={arXiv},
+        primaryClass={cs.CL}
 }
 
-@misc{knowlm,
-  author = {Ningyu Zhang and Jintian Zhang and Xiaohan Wang and Honghao Gui and Kangwei Liu and Yinuo Jiang and Xiang Chen and Shengyu Mao and Shuofei Qiao and Yuqi Zhu and Zhen Bi and Jing Chen and Xiaozhuan Liang and Yixin Ou and Runnan Fang and Zekun Xi and Xin Xu and Lei Li and Peng Wang and Mengru Wang and Yunzhi Yao and Bozhong Tian and Yin Fang and Guozhou Zheng and Huajun Chen},
-  title = {KnowLM: An Open-sourced Knowledgeable Large Langugae Model Framework},
-  year = {2023},
- url = {http://knowlm.zjukg.cn/},
-}
-
-@misc{bi2023programofthoughts,
-      author={Zhen Bi and Ningyu Zhang and Yinuo Jiang and Shumin Deng and Guozhou Zheng and Huajun Chen},
-      title={When Do Program-of-Thoughts Work for Reasoning?}, 
-      year={2023},
-      eprint={2308.15452},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL}
-}
+@article{chen2024UniHDet,
+  author       = {Xiang Chen and Chenxi Wang and Yida Xue, Ningyu Zhang 
+    and Xiaoyan Yang and Qiang Li and Yue Shen and Jinjie Gu and Huajun Chen},
+  title        = {Unified Hallucination Detection for Multimodal Large Language Models},
+  journal      = {CoRR},
+  year         = {2024},
+  eprinttype   = {arXiv},
+  eprint       = {2401.05268},
+} 
 ```
 
 ---
