@@ -25,7 +25,7 @@
 
 <!-- - <a href="#news">What's New</a> -->
 - <a href="#overview">Overview</a>
-  - <a href="#unified-multimodal-Hallucination">Unified Multimodal Hallucination</a>
+  - <a href="#unified-multimodal-hallucination">Unified Multimodal Hallucination </a>
   - <a href="#dataset-mhallubench-statistic">Dataset: MHalluBench Statistic</a>
   - <a href="#framework-uniHD-illustration">Framework: UniHD Illustration</a>
 - <a href="#quickstart">Quickstart</a>
@@ -42,7 +42,7 @@
 
 EasyDetect is a systematic package which is proposed as an easy-to-use hallucination detection framework for Multimodal Large Language Models(MLLMs) like GPT-4V, Gemini, LlaVA in your research experiments. 
 
-### Unified Multimodal Hallucination Detection
+### Unified Multimodal Hallucination
 
 #### Unified View of Detection
 
