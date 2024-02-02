@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="figs/logo.jpg" width="300px">
+<img src="figs/easydetect.jpg" width="300px">
 
 **An Easy-to-use Multimodal Hallucination Detection Framework for MLLMs**
 
@@ -78,11 +78,9 @@ nation detectors. Further statistical details about MHaluBench are provided in b
 **Figure 3:** *Distribution of hallucination categories within hallucination-labeled claims of MHaluBench.* 
 
 ### Framework: UniHDet Illustration
-
-<img src="figs/framework.png" width="200">
-
 Addressing the key challenges in hallucination detection, we introduce a unified framework in Figure 4 that systematically tackles multimodal hallucination identification for both image-to-text and text-to-image tasks. Our framework capitalizes on the domain-specific strengths of various tools to efficiently gather multi-modal evidence for confirming hallucinations. 
 
+<img src="figs/framework.png" width="200">
 **Figure 4:** *The specific illustration of UniHDet for unified multimodal hallucination detection.* 
 
 ---
