@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="figs/easydetect.jpg" width="60%" height="60%">
+<img src="figs/easydetect.jpg" width="20%" height="20%">
 
 **An Easy-to-use Multimodal Hallucination Detection Framework for MLLMs**
 
@@ -10,7 +10,7 @@
   <a href="https://huggingface.co/spaces/zjunlp/MHaluBench">Datasets</a> •
   <a href="#overview">Overview</a> •
   <a href="#quickstart">Quickstart</a> •
-\  <a href="#citation">Citation</a> •
+  <a href="#citation">Citation</a> •
   <a href="#contributors">Contributors</a>
 </p>
 
@@ -39,11 +39,14 @@
 
 ## 🌟Overview
 
+
 EasyDetect is a systematic package which is proposed as an easy-to-use hallucination detection framework for Multimodal Large Language Models(MLLMs) like GPT-4V, Gemini, LlaVA in your research experiments. 
 
 
 ### Unified Multimodal Hallucination Detection
+
 #### Unified View of Detection
+
 A prerequisite for unified detection is the coherent categorization of the principal categories of hallucinations within MLLMs. Our paper superficially examines the following Hallucination Taxonomy from a unified perspective:
 
 <img src="figs/view.png"  width="90%" height="90%">
@@ -61,10 +64,12 @@ various levels such as object, attribute, and scene-text, as well as fact-confli
 
 
 #### Fine-grained Detection Task Definition
+
 Unified detection of multimodal hallucination necessitates the check of each image-text pair `a={v, x}`, wherein `v` denotes either the visual input provided to an MLLM, or the visual output synthesized by it. Correspondingly, `x` signifies the MLLM's generated textual response based on `v` or the textual user query for synthesizing `v`. Within this task, each `x` may contain multiple claims, denoted as $\{c_i\}\_\{i = 1 \cdots n\}$. The objective for hallucination detectors is to assess each claim from `a` to determine whether it is "hallucinatory" or "non-hallucinatory", providing a rationale for their judgments based on the provided definition of hallucination. Text hallucination detection from LLMs denotes a sub-case in this setting, where `v` is null.
 
 
 ### Dataset: MHalluBench Statistic
+
 To advance this research trajectory, we introduce the meta-evaluation benchmark MHaluBench, which encompasses the content from image-to-text and text-to-image generation, aiming to rigorously assess the advancements in multimodal halluci-
 nation detectors. Further statistical details about MHaluBench are provided in below Figures.
 
@@ -82,6 +87,7 @@ nation detectors. Further statistical details about MHaluBench are provided in b
 **Figure 3:** *Distribution of hallucination categories within hallucination-labeled claims of MHaluBench.* 
 
 ### Framework: UniHDet Illustration
+
 Addressing the key challenges in hallucination detection, we introduce a unified framework in Figure 4 that systematically tackles multimodal hallucination identification for both image-to-text and text-to-image tasks. Our framework capitalizes on the domain-specific strengths of various tools to efficiently gather multi-modal evidence for confirming hallucinations. 
 
 <img src="figs/framework.png">
@@ -133,7 +139,7 @@ python demo/run.py \
 ---
 ### 🚩Citation
 
-Please cite our repository if you use EasyInstruct in your work.
+Please cite our repository if you use EasyDetect in your work.
 
 ```bibtex
 @article{chen2024factchd,
@@ -161,8 +167,8 @@ Please cite our repository if you use EasyInstruct in your work.
 
 ## 🎉Contributors
 
-<a href="https://github.com/zjunlp/EasyInstruct/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=zjunlp/EasyInstruct" />
+<a href="https://github.com/OpenKG-ORG/EasyDetect/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=OpenKG-ORG/EasyDetect" />
 </a>
 
 We will offer long-term maintenance to fix bugs, solve issues and meet new requests. So if you have any problems, please put issues to us.
