@@ -25,9 +25,9 @@
 
 <!-- - <a href="#news">What's New</a> -->
 - <a href="#overview">Overview</a>
-  - <a href="#hallucination">Unified Multimodal Hallucination</a>
-  - <a href="#benchmark">Dataset: MHalluBench Statistic</a>
-  - <a href="#framework">Framework: UniHDet Illustration</a>
+  - <a href="#unified-multimodal-Hallucination">Unified Multimodal Hallucination</a>
+  - <a href="#dataset-mhallubench-statistic">Dataset: MHalluBench Statistic</a>
+  - <a href="#framework-uniHD-illustration">Framework: UniHD Illustration</a>
 - <a href="#quickstart">Quickstart</a>
   - <a href="#shell-script">Shell Script</a>
   - <a href="#gradio-app">Gradio App</a>
@@ -85,13 +85,13 @@ nation detectors. Further statistical details about MHaluBench are provided in b
 
 **Figure 3:** *Distribution of hallucination categories within hallucination-labeled claims of MHaluBench.* 
 
-### Framework: UniHDet Illustration
+### Framework: UniHD Illustration
 
 Addressing the key challenges in hallucination detection, we introduce a unified framework in Figure 4 that systematically tackles multimodal hallucination identification for both image-to-text and text-to-image tasks. Our framework capitalizes on the domain-specific strengths of various tools to efficiently gather multi-modal evidence for confirming hallucinations. 
 
 <img src="figs/framework.png">
 
-**Figure 4:** *The specific illustration of UniHDet for unified multimodal hallucination detection.* 
+**Figure 4:** *The specific illustration of UniHD for unified multimodal hallucination detection.* 
 
 ---
 
@@ -151,7 +151,7 @@ Please cite our repository if you use EasyDetect in your work.
         primaryClass={cs.CL}
 }
 
-@article{chen2024UniHDet,
+@article{chen2024UniHD,
   author       = {Xiang Chen and Chenxi Wang and Yida Xue, Ningyu Zhang 
     and Xiaoyan Yang and Qiang Li and Yue Shen and Jinjie Gu and Huajun Chen},
   title        = {Unified Hallucination Detection for Multimodal Large Language Models},
