@@ -9,6 +9,7 @@
 <p align="center">
   <a href="https://huggingface.co/spaces/zjunlp/MHaluBench">Datasets</a> •
   <a href="#overview">Overview</a> •
+  <a href="#installation">🔧Installation</a> •
   <a href="#quickstart">Quickstart</a> •
   <a href="#citation">Citation</a> •
   <a href="#contributors">Contributors</a>
@@ -28,9 +29,8 @@
   - <a href="#unified-multimodal-hallucination">Unified Multimodal Hallucination </a>
   - <a href="#dataset-mhallubench-statistic">Dataset: MHalluBench Statistic</a>
   - <a href="#framework-uniHD-illustration">Framework: UniHD Illustration</a>
+- <a href="#installation">🔧Installation</a>
 - <a href="#quickstart">Quickstart</a>
-  - <a href="#shell-script">Shell Script</a>
-  - <a href="#gradio-app">Gradio App</a>
 - <a href="#citation">Citation</a>
 - <a href="#contributors">Contributors</a>
 ---
