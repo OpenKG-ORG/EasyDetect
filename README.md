@@ -7,12 +7,12 @@
 ---
 
 <p align="center">
-  <a href="https://huggingface.co/spaces/zjunlp/MHaluBench">Datasets</a> •
-  <a href="#overview">Overview</a> •
+  <a href="https://huggingface.co/spaces/zjunlp/MHaluBench">🤗Benchmark</a> •
+  <a href="#overview">🌟Overview</a> •
   <a href="#installation">🔧Installation</a> •
-  <a href="#quickstart">Quickstart</a> •
-  <a href="#citation">Citation</a> •
-  <a href="#contributors">Contributors</a>
+  <a href="#quickstart">⏩Quickstart</a> •
+  <a href="#citation">🚩Citation</a> •
+  <a href="#contributors">🎉Contributors</a>
 </p>
 
 ![](https://img.shields.io/badge/version-v0.1.1-blue)
@@ -25,14 +25,14 @@
 ## Table of Contents
 
 <!-- - <a href="#news">What's New</a> -->
-- <a href="#overview">Overview</a>
+- <a href="#overview">🌟Overview</a>
   - <a href="#unified-multimodal-hallucination">Unified Multimodal Hallucination </a>
   - <a href="#dataset-mhallubench-statistic">Dataset: MHalluBench Statistic</a>
   - <a href="#framework-uniHD-illustration">Framework: UniHD Illustration</a>
 - <a href="#installation">🔧Installation</a>
-- <a href="#quickstart">Quickstart</a>
-- <a href="#citation">Citation</a>
-- <a href="#contributors">Contributors</a>
+- <a href="#quickstart">⏩Quickstart</a>
+- <a href="#citation">🚩Citation</a>
+- <a href="#contributors">🎉Contributors</a>
 ---
 
 
@@ -56,9 +56,9 @@ A prerequisite for unified detection is the coherent categorization of the princ
 **Figure 1:** Unified multimodal hallucination detection aims to identify and detect modality-conflicting hallucinations at
 various levels such as object, attribute, and scene-text, as well as fact-conflicting hallucinations in both image-to-text and text-to-image generation.
 
-**Modality-Conflicting Hallucination.**  MLLMs sometimes generate outputs that conflict with inputs from other modalities, leading to issues such as incorrect objects, attributes, or scene text. An example in above Figure (a)
- includes an MLLM inaccurately describing an athlete's uniform color, showcasing an attribute-level conflict due to MLLMs' limited ability to achieve fine-grained text-image alignment.
- **Fact-Conflicting Hallucination.** Outputs from MLLMs may contradict established factual knowledge. Image-to-text models can generate narratives that stray from the actual content by incorporating irrelevant facts, while text-to-image models may produce visuals that fail to reflect the factual knowledge contained in text prompts. These discrepancies underline the struggle of MLLMs to maintain factual consistency, representing a significant challenge in the domain.
+**Modality-Conflicting Hallucination.**  MLLMs sometimes generate outputs that conflict with inputs from other modalities, leading to issues such as incorrect objects, attributes, or scene text. An example in above Figure (a) includes an MLLM inaccurately describing an athlete's uniform color, showcasing an attribute-level conflict due to MLLMs' limited ability to achieve fine-grained text-image alignment.
+
+**Fact-Conflicting Hallucination.** Outputs from MLLMs may contradict established factual knowledge. Image-to-text models can generate narratives that stray from the actual content by incorporating irrelevant facts, while text-to-image models may produce visuals that fail to reflect the factual knowledge contained in text prompts. These discrepancies underline the struggle of MLLMs to maintain factual consistency, representing a significant challenge in the domain.
 
 #### Fine-grained Detection Task Definition
 
