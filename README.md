@@ -95,42 +95,101 @@ Addressing the key challenges in hallucination detection, we introduce a unified
 
 ---
 
+## 🔧Installation
+
+**Installation for local development:**
+```
+git clone https://github.com/OpenKG-ORG/EasyDetect.git
+cd EasyDetect
+pip install -r requirements.txt
+```
+
+**Installation for tools(GroundingDINO and MAERec):**
+```
+# install GroundingDINO
+git clone https://github.com/IDEA-Research/GroundingDINO.git
+cp -r GroundingDINO EasyDetect/GroundingDINO
+cd EasyDetect/GroundingDINO/
+pip install -e .
+cd ..
+
+# install MAERec
+git clone https://github.com/Mountchicken/Union14M.git
+cp -r Union14M/mmocr-dev-1.x EasyDetect/mmocr
+cd EasyDetect/mmocr/
+pip install -U openmim
+mim install mmengine
+mim install mmcv
+mim install mmdet
+pip install timm
+pip install -r requirements/albu.txt
+pip install -r requirements.txt
+pip install -v -e .
+cd ..
+
+mkdir weights
+cd weights
+wget -q https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha/groundingdino_swint_ogc.pth
+wget https://download.openmmlab.com/mmocr/textdet/dbnetpp/dbnetpp_resnet50-oclip_fpnc_1200e_icdar2015/dbnetpp_resnet50-oclip_fpnc_1200e_icdar2015_20221101_124139-4ecb39ac.pth -O dbnetpp.pth
+wget https://github.com/Mountchicken/Union14M/releases/download/Checkpoint/maerec_b_union14m.pth -O maerec_b.pth
+cd ..
+```
+
+---
+
 ## ⏩Quickstart
 
-We provide two ways for users to quickly get started with EasyInstruct. You can either use the shell script or the Gradio app based on your specific needs.
+We provide two ways for users to quickly get started with EasyDetect. You can either use the shell script or the Gradio app based on your specific needs.
 
 ### Shell Script
 
 #### Step1: Write a configuration file in yaml format
 
-Users can easily configure the parameters of EasyInstruct in a yaml file or just quickly use the default parameters in the configuration file we provide. Following is an example of the configuration file for Self-Instruct.
+Users can easily configure the parameters of EasyDetect in a yaml file or just quickly use the default parameters in the configuration file we provide. The path of the configuration file is EasyDetect/pipeline/config/config.yaml
 
 ```yaml
-generator:
-  SelfInstructGenerator:
-    target_dir: data/generations/
-    data_format: alpaca
-    seed_tasks_path: data/seed_tasks.jsonl
-    generated_instructions_path: generated_instructions.jsonl
-    generated_instances_path: generated_instances.jsonl
-    num_instructions_to_generate: 100
-    engine: gpt-3.5-turbo
-    num_prompt_instructions: 8
+openai:
+  api_key: Input your openai api key
+  base_url: Input base_url, default is None
+  temperature: 0.2  
+  max_tokens: 1024
+tool: 
+  detect:
+    groundingdino_config: the path of GroundingDINO_SwinT_OGC.py
+    model_path: the path of groundingdino_swint_ogc.pth
+    device: cuda:0
+    BOX_TRESHOLD: 0.35
+    TEXT_TRESHOLD: 0.25
+    AREA_THRESHOLD: 0.001
+  ocr:
+    dbnetpp_config: the path of dbnetpp_resnet50-oclip_fpnc_1200e_icdar2015.py
+    dbnetpp_path: the path of dbnetpp.pth
+    maerec_config: the path of maerec_b_union14m.py
+    maerec_path: the path of maerec_b.pth
+    device: cuda:0
+    content: word.number
+    cachefiles_path: the path of cache_files to save temp images
+    BOX_TRESHOLD: 0.2
+    TEXT_TRESHOLD: 0.25
+  google_serper:
+    serper_api_key: Input your serper api key
+    snippet_cnt: 10
+prompts:
+  claim_generate: pipeline/prompts/claim_generate.yaml
+  query_generate: pipeline/prompts/query_generate.yaml
+  verify: pipeline/prompts/verify.yaml
 ```
 
-More example configuration files can be found at [configs](https://github.com/zjunlp/EasyInstruct/tree/main/configs).
-
-#### Step2: Run the shell script
-
-Users should first specify the configuration file and provide their own OpenAI API key. Then, run the follwing shell script to launch the instruction generation or selection process.
-
-```shell
-config_file=""
-openai_api_key=""
-
-python demo/run.py \
-    --config  $config_file\
-    --openai_api_key $openai_api_key \
+#### Step2: Run with the Example Code
+Example Code
+```python
+from pipeline.run_pipeline import *
+text = "The cafe in the image is named \"Hauptbahnhof\""
+image_path = "./examples/058214af21a03013.jpg"
+pipeline = Pipeline()
+response, claim_list = pipeline.run(text=text, image_path=filepath, type=type)
+print(response)
+print(claim_list)
 ```
 
 
