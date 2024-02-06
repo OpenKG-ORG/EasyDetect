@@ -209,16 +209,14 @@ Please cite our repository if you use EasyDetect in your work.
         archivePrefix={arXiv},
         primaryClass={cs.CL}
 }
-
-@article{chen2024UniHD,
-  author       = {Xiang Chen and Chenxi Wang and Yida Xue, Ningyu Zhang 
-    and Xiaoyan Yang and Qiang Li and Yue Shen and Jinjie Gu and Huajun Chen},
-  title        = {Unified Hallucination Detection for Multimodal Large Language Models},
-  journal      = {CoRR},
-  year         = {2024},
-  eprinttype   = {arXiv},
-  eprint       = {2401.05268},
-} 
+@article{chen2024unified,
+      title={Unified Hallucination Detection for Multimodal Large Language Models}, 
+      author={Xiang Chen and Chenxi Wang and Yida Xue and Ningyu Zhang and Xiaoyan Yang and Qiang Li and Yue Shen and Jinjie Gu and Huajun Chen},
+      year={2024},
+      eprint={2402.03190},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}
 ```
 
 ---
