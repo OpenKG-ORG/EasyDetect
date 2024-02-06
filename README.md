@@ -8,6 +8,7 @@
 
 <p align="center">
   <a href="https://huggingface.co/spaces/zjunlp/MHaluBench">🤗Benchmark</a> •
+  <a href="http://easydetect.openkg.cn/">🍎Demo</a> •
   <a href="#overview">🌟Overview</a> •
   <a href="#installation">🔧Installation</a> •
   <a href="#quickstart">⏩Quickstart</a> •
@@ -139,9 +140,7 @@ cd ..
 
 ## ⏩Quickstart
 
-We provide two ways for users to quickly get started with EasyDetect. You can either use the shell script or the Gradio app based on your specific needs.
-
-### Shell Script
+We provide example code for users to quickly get started with EasyDetect.
 
 #### Step1: Write a configuration file in yaml format
 
@@ -184,10 +183,11 @@ prompts:
 Example Code
 ```python
 from pipeline.run_pipeline import *
+pipeline = Pipeline()
 text = "The cafe in the image is named \"Hauptbahnhof\""
 image_path = "./examples/058214af21a03013.jpg"
-pipeline = Pipeline()
-response, claim_list = pipeline.run(text=text, image_path=filepath, type=type)
+type = "image-to-text"
+response, claim_list = pipeline.run_pipeline(text=text, image_path=filepath, type=type)
 print(response)
 print(claim_list)
 ```
