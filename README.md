@@ -200,22 +200,34 @@ print(claim_list)
 Please cite our repository if you use EasyDetect in your work.
 
 ```bibtex
-@article{chen2024factchd,
-        title={FactCHD: Benchmarking Fact-Conflicting Hallucination Detection}, 
-        author={Xiang Chen and Duanzheng Song and Honghao Gui and Chenxi Wang and Ningyu Zhang 
-          and Jiang Yong and Fei Huang and Chengfei Lv and Dan Zhang and Huajun Chen},
-        year={2024},
-        eprint={2310.12086},
-        archivePrefix={arXiv},
-        primaryClass={cs.CL}
+@article{DBLP:journals/corr/abs-2310-12086,
+  author       = {Xiang Chen and
+                  Duanzheng Song and
+                  Honghao Gui and
+                  Chengxi Wang and
+                  Ningyu Zhang and
+                  Jiang Yong and
+                  Fei Huang and
+                  Chengfei Lv and
+                  Dan Zhang and
+                  Huajun Chen},
+  title        = {FactCHD: Benchmarking Fact-Conflicting Hallucination Detection},
+  journal      = {CoRR},
+  volume       = {abs/2310.12086},
+  year         = {2023},
+  url          = {https://doi.org/10.48550/arXiv.2310.12086},
+  doi          = {10.48550/ARXIV.2310.12086},
+  eprinttype    = {arXiv},
+  eprint       = {2310.12086},
+  timestamp    = {Thu, 01 Feb 2024 09:55:04 +0100},
+  biburl       = {https://dblp.org/rec/journals/corr/abs-2310-12086.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 @article{chen2024unified,
-      title={Unified Hallucination Detection for Multimodal Large Language Models}, 
-      author={Xiang Chen and Chenxi Wang and Yida Xue and Ningyu Zhang and Xiaoyan Yang and Qiang Li and Yue Shen and Jinjie Gu and Huajun Chen},
-      year={2024},
-      eprint={2402.03190},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL}
+  title={Unified Hallucination Detection for Multimodal Large Language Models},
+  author={Chen, Xiang and Wang, Chenxi and Xue, Yida and Zhang, Ningyu and Yang, Xiaoyan and Li, Qiang and Shen, Yue and Gu, Jinjie and Chen, Huajun},
+  journal={arXiv preprint arXiv:2402.03190},
+  year={2024}
 }
 ```
 
