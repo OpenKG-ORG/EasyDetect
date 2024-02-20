@@ -40,10 +40,14 @@
 
 
 
+
 ## 🌟Overview
 
-
 EasyDetect is a systematic package which is proposed as an easy-to-use hallucination detection framework for Multimodal Large Language Models(MLLMs) like GPT-4V, Gemini, LlaVA in your research experiments. 
+
+## Acknowledgement
+
+Part implementation of this project were assisted and inspired by the related hallucination toolkits including [FactTool](https://github.com/GAIR-NLP/factool), [Woodpecker](https://github.com/BradyFU/Woodpecker), and others. We follow the same license for open-sourcing and thank them for their contributions to the community.
 
 ### Unified Multimodal Hallucination
 
@@ -234,10 +238,6 @@ Please cite our repository if you use EasyDetect in your work.
 ```
 
 ---
-
-
-## Acknowledgement
-Thank you very much for the insights provided by the related hallucination toolkits such as [FactTool](https://github.com/GAIR-NLP/factool), [Woodpecker](https://github.com/BradyFU/Woodpecker), and others.
 
 
 
