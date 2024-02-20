@@ -13,7 +13,7 @@
   <a href="#overview">🌟Overview</a> •
   <a href="#installation">🔧Installation</a> •
   <a href="#quickstart">⏩Quickstart</a> •
-  <a href="#citation">🚩Citation</a> •
+  <a href="#citation">🚩Citation</a> 
   <!-- <a href="#contributors">🎉Contributors</a> -->
 </p>
 
