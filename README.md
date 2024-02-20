@@ -7,7 +7,7 @@
 ---
 
 <p align="center">
-<!--   <a href="#citation">🌻Acknowledgement</a> • -->
+  <a href="#citation">🌻Acknowledgement</a> •
   <a href="https://huggingface.co/spaces/openkg/MHaluBench">🤗Benchmark</a> •
   <a href="http://easydetect.openkg.cn/">🍎Demo</a> •
   <a href="#overview">🌟Overview</a> •
@@ -16,11 +16,10 @@
   <a href="#citation">🚩Citation</a> 
   <!-- <a href="#contributors">🎉Contributors</a> -->
 </p>
-
 ![](https://img.shields.io/badge/version-v0.1.1-blue)
-<!-- [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT) -->
 ![](https://img.shields.io/github/last-commit/zjunlp/EasyDetect?color=green) 
 ![](https://img.shields.io/badge/PRs-Welcome-red) 
+<!-- [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT) -->
 
 </div>
 
