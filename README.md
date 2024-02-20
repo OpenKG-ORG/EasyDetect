@@ -219,7 +219,7 @@ Please cite our repository if you use EasyDetect in your work.
   biburl       = {https://dblp.org/rec/journals/corr/abs-2310-12086.bib},
   bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
-@article{chen2024unified,
+@article{chen2024unihd,
   author       = {Xiang Chen and Chenxi Wang and Yida Xue and Ningyu Zhang and Xiaoyan Yang and 
                   Qiang Li and Yue Shen and Lei Liang and Jinjie Gu and Huajun Chen},
   title        = {Unified Hallucination Detection for Multimodal Large Language Models},
