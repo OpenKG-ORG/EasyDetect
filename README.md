@@ -13,6 +13,7 @@
   <a href="#installation">🔧Installation</a> •
   <a href="#quickstart">⏩Quickstart</a> •
   <a href="#citation">🚩Citation</a> •
+  <a href="#citation">Acknowledgement</a> •
   <a href="#contributors">🎉Contributors</a>
 </p>
 
@@ -33,6 +34,7 @@
 - <a href="#installation">🔧Installation</a>
 - <a href="#quickstart">⏩Quickstart</a>
 - <a href="#citation">🚩Citation</a>
+- <a href="#acknowledgement">🚩Acknowledgement</a>
 - <a href="#contributors">🎉Contributors</a>
 ---
 
@@ -195,7 +197,7 @@ print(claim_list)
 
 
 ---
-### 🚩Citation
+## 🚩Citation
 
 Please cite our repository if you use EasyDetect in your work.
 
