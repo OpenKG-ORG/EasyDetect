@@ -27,6 +27,7 @@
 ## Table of Contents
 
 <!-- - <a href="#news">What's New</a> -->
+- <a href="#acknowledgement">🚩Acknowledgement</a>
 - <a href="#overview">🌟Overview</a>
   - <a href="#unified-multimodal-hallucination">Unified Multimodal Hallucination </a>
   - <a href="#dataset-mhallubench-statistic">Dataset: MHalluBench Statistic</a>
@@ -34,20 +35,17 @@
 - <a href="#installation">🔧Installation</a>
 - <a href="#quickstart">⏩Quickstart</a>
 - <a href="#citation">🚩Citation</a>
-- <a href="#acknowledgement">🚩Acknowledgement</a>
 - <a href="#contributors">🎉Contributors</a>
 ---
 
+## Acknowledgement
 
+Part implementation of this project were assisted and inspired by the related hallucination toolkits including [FactTool](https://github.com/GAIR-NLP/factool), [Woodpecker](https://github.com/BradyFU/Woodpecker), and others. We follow the same license for open-sourcing and thank them for their contributions to the community.
 
 
 ## 🌟Overview
 
 EasyDetect is a systematic package which is proposed as an easy-to-use hallucination detection framework for Multimodal Large Language Models(MLLMs) like GPT-4V, Gemini, LlaVA in your research experiments. 
-
-## Acknowledgement
-
-Part implementation of this project were assisted and inspired by the related hallucination toolkits including [FactTool](https://github.com/GAIR-NLP/factool), [Woodpecker](https://github.com/BradyFU/Woodpecker), and others. We follow the same license for open-sourcing and thank them for their contributions to the community.
 
 ### Unified Multimodal Hallucination
 
