@@ -216,7 +216,6 @@ Please cite our repository if you use EasyDetect in your work.
   doi          = {10.48550/ARXIV.2310.12086},
   eprinttype    = {arXiv},
   eprint       = {2310.12086},
-  timestamp    = {Thu, 01 Feb 2024 09:55:04 +0100},
   biburl       = {https://dblp.org/rec/journals/corr/abs-2310-12086.bib},
   bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
@@ -231,7 +230,6 @@ Please cite our repository if you use EasyDetect in your work.
   doi          = {10.48550/ARXIV.2402.03190},
   eprinttype    = {arXiv},
   eprint       = {2402.03190},
-  timestamp    = {Mon, 12 Feb 2024 13:36:38 +0100},
   biburl       = {https://dblp.org/rec/journals/corr/abs-2402-03190.bib},
   bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
