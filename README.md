@@ -7,18 +7,18 @@
 ---
 
 <p align="center">
+  <a href="#citation">🌻Acknowledgement</a> •
   <a href="https://huggingface.co/spaces/openkg/MHaluBench">🤗Benchmark</a> •
   <a href="http://easydetect.openkg.cn/">🍎Demo</a> •
   <a href="#overview">🌟Overview</a> •
   <a href="#installation">🔧Installation</a> •
   <a href="#quickstart">⏩Quickstart</a> •
   <a href="#citation">🚩Citation</a> •
-  <a href="#citation">Acknowledgement</a> •
-  <a href="#contributors">🎉Contributors</a>
+  <!-- <a href="#contributors">🎉Contributors</a> -->
 </p>
 
 ![](https://img.shields.io/badge/version-v0.1.1-blue)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+<!-- [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT) -->
 ![](https://img.shields.io/github/last-commit/zjunlp/EasyDetect?color=green) 
 ![](https://img.shields.io/badge/PRs-Welcome-red) 
 
@@ -26,8 +26,7 @@
 
 ## Table of Contents
 
-<!-- - <a href="#news">What's New</a> -->
-- <a href="#acknowledgement">🚩Acknowledgement</a>
+- <a href="#acknowledgement">🌻Acknowledgement</a>
 - <a href="#overview">🌟Overview</a>
   - <a href="#unified-multimodal-hallucination">Unified Multimodal Hallucination </a>
   - <a href="#dataset-mhallubench-statistic">Dataset: MHalluBench Statistic</a>
@@ -35,12 +34,14 @@
 - <a href="#installation">🔧Installation</a>
 - <a href="#quickstart">⏩Quickstart</a>
 - <a href="#citation">🚩Citation</a>
-- <a href="#contributors">🎉Contributors</a>
 ---
 
-## Acknowledgement
+## 🌻Acknowledgement
 
-Part implementation of this project were assisted and inspired by the related hallucination toolkits including [FactTool](https://github.com/GAIR-NLP/factool), [Woodpecker](https://github.com/BradyFU/Woodpecker), and others. We follow the same license for open-sourcing and thank them for their contributions to the community.
+Part implementation of this project were assisted and inspired by the related hallucination toolkits including [FactTool](https://github.com/GAIR-NLP/factool), [Woodpecker](https://github.com/BradyFU/Woodpecker), and others. 
+This repository also benefits from the project from [mPLUG-Owl](https://github.com/X-PLUG/mPLUG-Owl), [MiniGPT-4](https://github.com/Vision-CAIR/MiniGPT-4), [LLaVA](https://github.com/haotian-liu/LLaVA), [GroundingDINO](https://github.com/IDEA-Research/GroundingDINO), and [MAERec ](https://github.com/Mountchicken/Union14M). 
+We follow the same license for open-sourcing and thank them for their contributions to the community.
+
 
 
 ## 🌟Overview
@@ -55,7 +56,7 @@ A prerequisite for unified detection is the coherent categorization of the princ
 
 <p align="center">
 <img src="figs/view.png"  width="60%" height="60%">
-<img src="figs/intro.jpg" width="60%" height="60%">
+<img src="figs/intro.png" width="60%" height="60%">
 </p>
 
 **Figure 1:** Unified multimodal hallucination detection aims to identify and detect modality-conflicting hallucinations at
@@ -204,17 +205,9 @@ print(claim_list)
 Please cite our repository if you use EasyDetect in your work.
 
 ```bibtex
-@article{DBLP:journals/corr/abs-2310-12086,
-  author       = {Xiang Chen and
-                  Duanzheng Song and
-                  Honghao Gui and
-                  Chengxi Wang and
-                  Ningyu Zhang and
-                  Jiang Yong and
-                  Fei Huang and
-                  Chengfei Lv and
-                  Dan Zhang and
-                  Huajun Chen},
+@article{chen23factchd,
+  author       = {Xiang Chen and Duanzheng Song and Honghao Gui and Chengxi Wang and Ningyu Zhang and 
+                  Jiang Yong and Fei Huang and Chengfei Lv and Dan Zhang and Huajun Chen},
   title        = {FactCHD: Benchmarking Fact-Conflicting Hallucination Detection},
   journal      = {CoRR},
   volume       = {abs/2310.12086},
@@ -228,10 +221,19 @@ Please cite our repository if you use EasyDetect in your work.
   bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 @article{chen2024unified,
-  title={Unified Hallucination Detection for Multimodal Large Language Models},
-  author={Chen, Xiang and Wang, Chenxi and Xue, Yida and Zhang, Ningyu and Yang, Xiaoyan and Li, Qiang and Shen, Yue and Gu, Jinjie and Chen, Huajun},
-  journal={arXiv preprint arXiv:2402.03190},
-  year={2024}
+  author       = {Xiang Chen and Chenxi Wang and Yida Xue and Ningyu Zhang and Xiaoyan Yang and 
+                  Qiang Li and Yue Shen and Lei Liang and Jinjie Gu and Huajun Chen},
+  title        = {Unified Hallucination Detection for Multimodal Large Language Models},
+  journal      = {CoRR},
+  volume       = {abs/2402.03190},
+  year         = {2024},
+  url          = {https://doi.org/10.48550/arXiv.2402.03190},
+  doi          = {10.48550/ARXIV.2402.03190},
+  eprinttype    = {arXiv},
+  eprint       = {2402.03190},
+  timestamp    = {Mon, 12 Feb 2024 13:36:38 +0100},
+  biburl       = {https://dblp.org/rec/journals/corr/abs-2402-03190.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 ```
 
