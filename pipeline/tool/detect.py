@@ -1,3 +1,8 @@
+# Utilizing the following code snippet based on the algorithm proposed in the paper:
+# Title: "Woodpecker: Hallucination correction for multimodal large language models"
+# Author: Yin et al.
+# Original code source: https://github.com/BradyFU/Woodpecker/blob/main/models/detector.py
+
 import yaml
 import torch
 import os
