@@ -1,3 +1,8 @@
+# Utilizing the following code snippet based on the algorithm proposed in the paper:
+# Title: "FacTool: Factuality Detection in Generative AI--A Tool Augmented Framework for Multi-Task and Multi-Domain Scenarios"
+# Author: Chern et al.
+# Original code source: https://github.com/GAIR-NLP/factool/blob/main/factool/knowledge_qa/google_serper.py
+
 import asyncio
 import aiohttp
 
