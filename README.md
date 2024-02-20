@@ -39,7 +39,7 @@
 ## 🌻Acknowledgement
 
 Part implementation of this project were assisted and inspired by the related hallucination toolkits including [FactTool](https://github.com/GAIR-NLP/factool), [Woodpecker](https://github.com/BradyFU/Woodpecker), and others. 
-This repository also benefits from the project from [mPLUG-Owl](https://github.com/X-PLUG/mPLUG-Owl), [MiniGPT-4](https://github.com/Vision-CAIR/MiniGPT-4), [LLaVA](https://github.com/haotian-liu/LLaVA), [GroundingDINO](https://github.com/IDEA-Research/GroundingDINO), and [MAERec ](https://github.com/Mountchicken/Union14M). 
+This repository also benefits from the public project from [mPLUG-Owl](https://github.com/X-PLUG/mPLUG-Owl), [MiniGPT-4](https://github.com/Vision-CAIR/MiniGPT-4), [LLaVA](https://github.com/haotian-liu/LLaVA), [GroundingDINO](https://github.com/IDEA-Research/GroundingDINO), and [MAERec ](https://github.com/Mountchicken/Union14M). 
 We follow the same license for open-sourcing and thank them for their contributions to the community.
 
 
