@@ -235,7 +235,7 @@ Please cite our repository if you use EasyDetect in your work.
 
 
 ## Acknowledgement
-Thank you very much for the insights provided by the related hallucination toolkits such as [FactTool](https://arxiv.org/abs/2105.11259), [Woodpecker](https://arxiv.org/abs/2310.16045), and et al.
+Thank you very much for the insights provided by the related hallucination toolkits such as [FactTool](https://github.com/GAIR-NLP/factool), [Woodpecker](https://github.com/BradyFU/Woodpecker), and others.
 
 
 
