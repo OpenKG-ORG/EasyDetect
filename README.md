@@ -241,8 +241,6 @@ Please cite our repository if you use EasyDetect in your work.
 
 
 
-
-
 ## 🎉Contributors
 
 <a href="https://github.com/OpenKG-ORG/EasyDetect/graphs/contributors">
