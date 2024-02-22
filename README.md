@@ -8,7 +8,7 @@
 
 <p align="center">
   <a href="#citation">🌻Acknowledgement</a> •
-  <a href="https://huggingface.co/spaces/openkg/MHaluBench">🤗Benchmark</a> •
+  <a href="https://huggingface.co/datasets/openkg/MHaluBench">🤗Benchmark</a> •
   <a href="http://easydetect.openkg.cn/">🍎Demo</a> •
   <a href="#overview">🌟Overview</a> •
   <a href="#installation">🔧Installation</a> •
