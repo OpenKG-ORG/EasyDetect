@@ -35,6 +35,11 @@
 - <a href="#quickstart">⏩Quickstart</a>
 - <a href="#citation">🚩Citation</a>
 ---
+## 🔔News
+- **"In the future, we will release our open-source hallucination detection model."**
+- **2024-02-10 We release the EasyDetect [demo](http://easydetect.openkg.cn/)**.
+- **2024-02-05  We release the paper:"[Unified Hallucination Detection for Multimodal Large Language Models](https://arxiv.org/abs/2402.03190)" with a new benchmark [MHaluBench](https://huggingface.co/datasets/openkg/MHaluBench)! We are looking forward to any comments or discussions on this topic :)**
+- **2023-10-20 The EasyDetect project has been launched and is under development.**
 
 ## 🌻Acknowledgement
 
