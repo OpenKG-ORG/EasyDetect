@@ -197,7 +197,7 @@ pipeline = Pipeline()
 text = "The cafe in the image is named \"Hauptbahnhof\""
 image_path = "./examples/058214af21a03013.jpg"
 type = "image-to-text"
-response, claim_list = pipeline.run_pipeline(text=text, image_path=filepath, type=type)
+response, claim_list = pipeline.run(text=text, image_path=image_path, type=type)
 print(response)
 print(claim_list)
 ```
