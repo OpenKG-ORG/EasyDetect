@@ -119,15 +119,15 @@ pip install -r requirements.txt
 ```
 # install GroundingDINO
 git clone https://github.com/IDEA-Research/GroundingDINO.git
-cp -r GroundingDINO EasyDetect/GroundingDINO
-cd EasyDetect/GroundingDINO/
+cp -r GroundingDINO pipeline/GroundingDINO
+cd pipeline/GroundingDINO/
 pip install -e .
 cd ..
 
 # install MAERec
 git clone https://github.com/Mountchicken/Union14M.git
-cp -r Union14M/mmocr-dev-1.x EasyDetect/mmocr
-cd EasyDetect/mmocr/
+cp -r Union14M/mmocr-dev-1.x pipeline/mmocr
+cd pipeline/mmocr/
 pip install -U openmim
 mim install mmengine
 mim install mmcv
