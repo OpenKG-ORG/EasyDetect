@@ -36,7 +36,7 @@
 - <a href="#citation">🚩Citation</a>
 ---
 ## 🔔News
-- **2024-04-21 We replace all the base models in the demo with our own trained models, significantly reducing the inference time."**
+- **2024-04-21 We replace all the base models in the demo with our own trained models, significantly reducing the inference time.**
 - **2024-04-21 We release our open-source hallucination detection model HalDet-LLAVA, which can be downloaded in huggingface, modelscope and wisemodel.**
 - **2024-02-10 We release the EasyDetect [demo](http://easydetect.zjukg.cn/)**.
 - **2024-02-05  We release the paper:"[Unified Hallucination Detection for Multimodal Large Language Models](https://arxiv.org/abs/2402.03190)" with a new benchmark [MHaluBench](https://huggingface.co/datasets/openkg/MHaluBench)! We are looking forward to any comments or discussions on this topic :)**
