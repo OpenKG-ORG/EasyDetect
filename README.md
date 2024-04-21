@@ -1,8 +1,13 @@
 <div align="center">
 
+
+
 <img src="figs/easydetect.jpg" width="18%" height="18%">
 
 **An Easy-to-Use Multimodal Hallucination Detection Framework for MLLMs**
+
+This repo has been temporarily archived. Please move to [https://github.com/zjunlp/EasyDetect](https://github.com/zjunlp/EasyDetect) to try new features.
+
  
 ---
 
